@@ -2,12 +2,21 @@ const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
+const bodyParser = require("body-parser");
+const passport = require("passport");
 const PORT = process.env.PORT || 3000;
 
-// Define middleware here
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 
+const users = require("./routes/api/index");
+
+
+// Bodyparser middleware
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+);
+app.use(bodyParser.json());
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
@@ -15,6 +24,15 @@ if (process.env.NODE_ENV === "production") {
 
 // Add routes, both API and view
 app.use(routes);
+
+// Passport middleware
+app.use(passport.initialize());
+// Passport config
+require("./config/passport")(passport);
+// Routes
+app.use("/api/index", users);
+
+
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/clothingStore");
 
