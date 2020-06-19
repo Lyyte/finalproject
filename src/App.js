@@ -6,8 +6,12 @@ function App() {
   return (
     <Router>
       <div>
-        <Test />
+        <Switch>
+          <Route exact path="/" component={Test} />
+        </Switch>
       </div>
     </Router>
   )
 }
+
+export default App;

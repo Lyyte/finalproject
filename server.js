@@ -13,7 +13,7 @@ const users = require("./routes/api/index");
 // Bodyparser middleware
 app.use(
   bodyParser.urlencoded({
-    extended: false
+    extended: true
   })
 );
 app.use(bodyParser.json());
@@ -22,6 +22,9 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+// Add routes, both API and view
+app.use(routes);
+
 // Passport middleware
 app.use(passport.initialize());
 // Passport config
@@ -29,8 +32,7 @@ require("./config/passport")(passport);
 // Routes
 app.use("/api/index", users);
 
-// Add routes, both API and view
-app.use(routes);
+
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/clothingStore");
 
