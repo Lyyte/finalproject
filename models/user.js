@@ -19,4 +19,5 @@ const UserSchema = new Schema({
     default: Date.now
   }
 });
+// eslint-disable-next-line no-undef
 module.exports = User = mongoose.model("users", UserSchema);
