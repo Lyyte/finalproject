@@ -1,0 +1,42 @@
+input {
+    outline-color: #76bed0;
+}
+
+label {
+    padding-right: 15px;
+}
+
+#email {
+    margin: 10px 0px 15px 0px;
+}
+
+#psw {
+    margin: 0px 0px 15px 0px;
+}
+
+#psw-repeat {
+    margin: 0px 0px 10px 0px;
+}
+
+.btn {
+    margin: 5px 0px 5px 0px;
+    background-color: #f7cb15;
+    color: #444444;
+}
+
+.btn:hover {
+    background-color: #f1c101;
+    color: #222222;
+}
+
+.signin {
+    margin-top: 10px;
+}
+
+#sign-in-link {
+    color: #76bed0;
+}
+
+#sign-in-link:hover {
+    color: #59b4ca;
+}
