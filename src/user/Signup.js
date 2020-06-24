@@ -8,11 +8,12 @@ const Signup = () => {
         name: '',
         email: '',
         password: '',
+        password2: '',
         error: '',
         success: false
     });
 
-    const { name, email, password, success, error } = values;
+    const { name, email, password, password2, success, error } = values;
 
     const handleChange = name => event => {
         setValues({ ...values, error: false, [name]: event.target.value });
@@ -21,7 +22,7 @@ const Signup = () => {
     const clickSubmit = event => {
         event.preventDefault();
         setValues({ ...values, error: false });
-        signup({ name, email, password }).then(data => {
+        signup({ name, email, password, password2 }).then(data => {
             if (data) {
                 setValues({ ...values, error: data[Object.keys(data)[0]], success: false });
             } else {
@@ -30,6 +31,7 @@ const Signup = () => {
                     name: '',
                     email: '',
                     password: '',
+                    password2:'',
                     error: '',
                     success: true
                 });
@@ -56,6 +58,12 @@ const Signup = () => {
                 <label className="text-muted">Password</label>
                 <input onChange={handleChange('password')} type="password" className="form-control" value={password} />
             </div>
+
+            <div className="form-group">
+                <label className="text-muted">Confirm Password</label>
+                <input onChange={handleChange('password2')} type="password" className="form-control" value={password2} />
+            </div>
+
             <button onClick={clickSubmit} className="btn btn-primary">
                 Submit
             </button>
