@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '../core/layout';
 import { signup } from './index';
+import '../assets/css/signup.css';
 
 const Signup = () => {
     const [values, setValues] = useState({
@@ -64,8 +65,8 @@ const Signup = () => {
                 <input onChange={handleChange('password2')} type="password" className="form-control" value={password2} />
             </div>
 
-            <button onClick={clickSubmit} className="btn btn-primary">
-                Submit
+            <button onClick={clickSubmit} className="btn">
+                Sign Up
             </button>
         </form>
     );
@@ -77,15 +78,15 @@ const Signup = () => {
     );
 
     const showSuccess = () => (
-        <div className="alert alert-info" style={{ display: success ? '' : 'none' }}>
-            Your account has been created. Please <Link to="/signin">Signin</Link>
+        <div className="alert alert-success" style={{ display: success ? '' : 'none' }}>
+            Your account has been created. Please <Link to="/signin" style={{ color: '#76bed0' }}>Sign In.</Link>
         </div>
     );
 
     return (
         <Layout
-            title="Signup"
-            description="Signup to Node React E-commerce App"
+            title="Sign Up"
+            description="Sign Up for StoreName™"
             className="container col-md-8 offset-md-2"
         >
             {showSuccess()}

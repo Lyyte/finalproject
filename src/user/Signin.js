@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import Layout from "../core/layout";
 import { signin, authenticate, isAuthenticated } from "./index";
+import '../assets/css/signin.css';
 
 const Signin = () => {
     const [values, setValues] = useState({
@@ -57,7 +58,7 @@ const Signin = () => {
                     value={password}
                 />
             </div>
-            <button onClick={clickSubmit} className="btn btn-primary">
+            <button onClick={clickSubmit} className="btn">
                 Submit
             </button>
         </form>
@@ -94,8 +95,8 @@ const Signin = () => {
 
     return (
         <Layout
-            title="Signin"
-            description="Signin to Node React E-commerce App"
+            title="Sign In"
+            description="Sign In to StoreName™"
             className="container col-md-8 offset-md-2"
         >
             {showLoading()}

@@ -1,8 +1,10 @@
 import React from 'react'
 import Layout from './layout'
+import Carousel from './carousel';
 
 const Home = () => (
-    (<Layout title='Home' description='add product' className='container col-md-8 offset-md-2'>
+    (<Layout title='Welcome to Store Name™' description='Shop all your favs today.' className='container col-md-8 offset-md-2'>
+        <Carousel />
  <form>
       <div className="form-group">
           <label className="text-muted">Product Name</label>
