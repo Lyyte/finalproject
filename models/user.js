@@ -13,7 +13,11 @@ const UserSchema = new Schema({
   password: {
     type: String,
     required: true
-  }
+  },
+  role: {
+    type: Number,
+    default: 0
+},
 });
 // eslint-disable-next-line no-undef
 module.exports = User = mongoose.model("users", UserSchema);
