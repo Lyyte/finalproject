@@ -2,6 +2,7 @@ import React from "react";
 import Layout from "../core/layout";
 import { isAuthenticated } from "./index";
 import { Link } from "react-router-dom";
+import '../assets/css/dashboard.css';
 
 
 const Dashboard = () => {
