@@ -4,6 +4,9 @@ import Layout from "../core/layout";
 import { signin, authenticate, isAuthenticated } from "./index";
 import '../assets/css/signin.css';
 
+// This component renders a sign in form and will verify a user's provided info by
+// accessing the authentication logic provided in the index file in this directory
+
 const Signin = () => {
     const [values, setValues] = useState({
         email: "",

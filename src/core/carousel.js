@@ -3,6 +3,8 @@ import carousel1 from '../assets/images/carousel1.jpg';
 import carousel2 from '../assets/images/carousel2.jpg';
 import carousel3 from '../assets/images/carousel3.jpg';
 
+// This component is the image carousel found on the home page
+
 const Carousel = () => (
     <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">

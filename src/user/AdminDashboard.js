@@ -4,6 +4,8 @@ import { isAuthenticated } from "./index";
 import { Link } from "react-router-dom";
 import '../assets/css/dashboard.css';
 
+// Provides dashboard for admins that shows the user info and allows navigation to
+// the product and category creation
 
 const AdminDashboard = () => {
 

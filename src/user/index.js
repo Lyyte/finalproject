@@ -1,3 +1,7 @@
+// This file contains the logic and processes for all user data handling which includes
+// authentication and creation of JSON Web Tokens in order for a user to browse
+// the entire store page
+
 export const signup = user => {
     return fetch(`/api/register`, {
         method: 'POST',
