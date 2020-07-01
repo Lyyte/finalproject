@@ -3,7 +3,7 @@ import Layout from './layout'
 import Carousel from './carousel';
 
 const Home = () => (
-    (<Layout title='Welcome to Store Name™' description='Shop all your favs today.' className='container col-md-8 offset-md-2'>
+    (<Layout title='Welcome to Eleutheria™' description='Shop all your favs today.' className='container col-md-8 offset-md-2'>
         <Carousel />
  <form>
       <div className="form-group">

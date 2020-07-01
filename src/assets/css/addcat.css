@@ -1,3 +1,15 @@
+.back-text {
+    color: #76BED0;
+}
+
+.back-text:hover {
+    color: #4e96aa;
+}
+
+.back-text:active {
+    color: #3d8296;
+}
+
 /* Input Outline */
 textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {   
     box-shadow: 0 1px 1px rgba(118, 190, 208, 0.075) inset, 0 0 8px rgba(118, 190, 208, 0.6);
@@ -18,11 +30,3 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
     background-color: #dfb200;
     color: #222222;
 }
-
-/* #sign-in-link {
-    color: #76bed0;
-}
-
-#sign-in-link:hover {
-    color: #59b4ca;
-} */

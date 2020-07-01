@@ -48,7 +48,7 @@ const Dashboard = () => {
  const purchaseHistory = () => {
          return (
              <div className="card mb-5">
-                 <h3 className="card-header">Purchase history</h3>
+                 <h3 className="card-header">Purchase History</h3>
                  <ul className="list-group">
                      <li className="list-group-item" />
                 </ul>   
@@ -58,8 +58,8 @@ const Dashboard = () => {
 
     return (
         <Layout
-            title="Dashboard"
-            description={`Welcome ${name}!!`}
+            title="User Dashboard"
+            description={`Welcome, ${name}!`}
             className="container-fluid"
         >
             <div className="row">

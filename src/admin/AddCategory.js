@@ -3,6 +3,7 @@ import Layout from "../core/layout";
 import { isAuthenticated } from "../user/index";
 import { Link } from "react-router-dom";
 import { createCategory } from "./apiAdmin";
+import '../assets/css/addcat.css';
 
 const AddCategory = () => {
     const [name, setName] = useState("");
@@ -45,7 +46,7 @@ const AddCategory = () => {
                     required
                 />
             </div>
-            <button className="btn btn-outline-primary">Create Category</button>
+            <button className="btn">Create Category</button>
         </form>
     );
 
@@ -63,8 +64,8 @@ const AddCategory = () => {
 
     const goBack = () => (
         <div className="mt-5">
-            <Link to="/admin/dashboard" className="text-warning">
-                Back to Dashboard
+            <Link to="/admin/dashboard" className="back-text">
+            ← Back to Dashboard
             </Link>
         </div>
     );

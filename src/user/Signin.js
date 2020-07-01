@@ -96,7 +96,7 @@ const Signin = () => {
     return (
         <Layout
             title="Sign In"
-            description="Sign In to StoreName™"
+            description="Sign In to Eleutheria™"
             className="container col-md-8 offset-md-2"
         >
             {showLoading()}

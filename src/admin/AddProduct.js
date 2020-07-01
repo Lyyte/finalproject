@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Layout from '../core/layout';
 import { isAuthenticated } from '../user/index';
+import '../assets/css/addprod.css';
 
 const AddProduct = () => {
     const [values, setValues] = useState({
@@ -42,9 +43,9 @@ const AddProduct = () => {
 
     const newPostForm = () => (
         <form className="mb-3" >
-            <h4>Post Photo</h4>
+            <h4 id="photo-text">Post Photo</h4>
             <div className="form-group">
-                <label className="btn btn-secondary">
+                <label className="btn btn-photo">
                     <input onChange={handleChange('photo')} type="file" name="photo" accept="image/*" />
                 </label>
             </div>
@@ -91,7 +92,7 @@ const AddProduct = () => {
                 <input onChange={handleChange('quantity')} type="number" className="form-control" value={quantity} />
             </div>
 
-            <button className="btn btn-outline-primary">Create Product</button>
+            <button className="btn">Create Product</button>
         </form>
     );
 
@@ -115,7 +116,7 @@ const AddProduct = () => {
         );
 
     return (
-        <Layout title="Add a new product" description={`G'day ${user.name}, ready to add a new product?`}>
+        <Layout title="Add a New Product" description={`G'day ${user.name}, ready to add a new product?`}>
             <div className="row">
                 <div className="col-md-8 offset-md-2">
                     {showLoading()}
