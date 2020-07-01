@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import Layout from '../core/layout';
 import { isAuthenticated } from '../user/index';
 
+// Similar to create category, this component is accessed via the admin panel and allows
+// an admin to use a form to create a new product to be saved in the product database.
+// The category field will also dynamically pull from the category database in order
+// to remain up to date with categories added at later dates.
+
 const AddProduct = () => {
     const [values, setValues] = useState({
         name: '',

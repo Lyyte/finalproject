@@ -10,7 +10,7 @@ import AdminDashboard from './user/AdminDashboard'
 import AddCategory from './admin/AddCategory'
 import AddProduct from './admin/AddProduct';
 
-
+// These are the routes that direct to the various components that the user sees
 
 const Routes = () => {
     return (
