@@ -5,10 +5,18 @@ const routes = require("./routes");
 const app = express();
 const bodyParser = require("body-parser");
 const passport = require("passport");
+
+var cors = require('cors');
+
 const PORT = process.env.PORT || 3001;
 
 
 const users = require("./routes/api/index");
+
+
+app.use(cors())
+
+
 
 
 // Bodyparser middleware
