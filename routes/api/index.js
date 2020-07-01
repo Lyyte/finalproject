@@ -11,6 +11,24 @@ const storeRoutes = require("./store");
 
 router.use("/store", storeRoutes);
 
+
+var multer = require('multer')
+
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+  cb(null, 'public/assets/img')
+},
+filename: function (req, file, cb) {
+  cb(null, Date.now() + '-' +file.originalname )
+}
+})
+
+
+var upload = multer({ storage: storage }).single('file')
+
+
+
 // Load User model
 const User = require("../../models/user");
 
@@ -98,6 +116,20 @@ router.post("/login", (req, res) => {
       }
     });
   });
+});
+
+router.post('/upload',function(req, res) {
+   console.log("hit upload")  
+  upload(req, res, function (err) {
+         if (err instanceof multer.MulterError) {
+             return res.status(500).json(err)
+         } else if (err) {
+             return res.status(500).json(err)
+         }
+    return res.status(200).send(req.file)
+
+  })
+
 });
 
 module.exports = router;

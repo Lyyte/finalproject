@@ -20,7 +20,7 @@ const productSchema = new mongoose.Schema(
             maxlength: 32
         },
         category: {
-            type: ObjectId,
+            type: String,
             ref: "Category",
             required: false
         },
