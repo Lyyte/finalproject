@@ -4,6 +4,9 @@ import Layout from '../core/layout';
 import { signup } from './index';
 import '../assets/css/signup.css';
 
+// This component provides a form to allow a new user account to be created, the logic from
+// index is utilized to insure that the user info is saved to the database
+
 const Signup = () => {
     const [values, setValues] = useState({
         name: '',
