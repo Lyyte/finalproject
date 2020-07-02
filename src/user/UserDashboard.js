@@ -4,6 +4,8 @@ import { isAuthenticated } from "./index";
 import { Link } from "react-router-dom";
 import '../assets/css/dashboard.css';
 
+// The dashboard component allows the user to view information pertaining to their account
+// and includes functionalities such as the user cart
 
 const Dashboard = () => {
 

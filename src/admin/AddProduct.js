@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Layout from '../core/layout';
 import { isAuthenticated } from '../user/index';
-import '../assets/css/addprod.css';
+
 
 const AddProduct = () => {
     const [values, setValues] = useState({
@@ -37,7 +37,7 @@ const AddProduct = () => {
 
      const handleChange = name => event => {
          const value = name === 'photo' ? event.target.files[0] : event.target.value;
-         formData.set(name, value);
+        //  formData.set(name, value);
          setValues({ ...values, [name]: value });
      };
 
@@ -92,7 +92,6 @@ const AddProduct = () => {
                 <input onChange={handleChange('quantity')} type="number" className="form-control" value={quantity} />
             </div>
 
-            <button className="btn">Create Product</button>
         </form>
     );
 
@@ -114,6 +113,16 @@ const AddProduct = () => {
                 <h2>Loading...</h2>
             </div>
         );
+
+        const onClickHandler = () => {
+            const data = new FormData() 
+            data.append('file', values.photo)
+            axios.post("http://localhost:3001/api/upload", data, { // receive two parameter endpoint url ,form data 
+      })
+      .then(res => { // then print response status
+        console.log(res.statusText)
+      })
+        }
 
     return (
         <Layout title="Add a New Product" description={`G'day ${user.name}, ready to add a new product?`}>

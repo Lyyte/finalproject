@@ -3,6 +3,12 @@ import { Link, withRouter } from 'react-router-dom'
 import { signout, isAuthenticated } from "../user/index";
 import '../assets/css/menu.css';
 
+// Menu represents the navbar which will be different depending on if the user is signed in
+// or if they are an admin account.
+// Non signed in users will have the option to sign in or sign up
+// Signed in normal users will have the option to access the home page, dashboard, etc.
+// Admin users will be able to access the home page and dashboard.
+
 const isActive = (history, path) => {
     if (history.location.pathname === path) {
         return { color: "#444444" };
