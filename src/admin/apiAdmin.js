@@ -17,3 +17,19 @@ export const createCategory = (userId, token, category) => {
             console.log(err);
         });
 };
+
+export const createProduct = (product) => {
+    return fetch(`api/store`, {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+        },
+        body: product
+    })
+    .then(response => {
+        return response.json();
+    })
+    .catch(err => {
+        console.log(err)
+    })
+}
