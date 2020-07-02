@@ -20,7 +20,7 @@ const isActive = (history, path) => {
 const Menu = ({ history }) => (
     <div>
         <nav className="navbar navbar-expand-lg">
-            <a className="navbar-brand" href="/">StoreName™</a>
+            <a className="navbar-brand" href="/">Eleutheria™</a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>

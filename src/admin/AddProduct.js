@@ -1,13 +1,7 @@
 import React, { useState } from 'react';
 import Layout from '../core/layout';
 import { isAuthenticated } from '../user/index';
-import axios from 'axios';
 
-
-// Similar to create category, this component is accessed via the admin panel and allows
-// an admin to use a form to create a new product to be saved in the product database.
-// The category field will also dynamically pull from the category database in order
-// to remain up to date with categories added at later dates.
 
 const AddProduct = () => {
     const [values, setValues] = useState({
@@ -49,9 +43,9 @@ const AddProduct = () => {
 
     const newPostForm = () => (
         <form className="mb-3" >
-            <h4>Post Photo</h4>
+            <h4 id="photo-text">Post Photo</h4>
             <div className="form-group">
-                <label className="btn btn-secondary">
+                <label className="btn btn-photo">
                     <input onChange={handleChange('photo')} type="file" name="photo" accept="image/*" />
                 </label>
             </div>
@@ -98,7 +92,6 @@ const AddProduct = () => {
                 <input onChange={handleChange('quantity')} type="number" className="form-control" value={quantity} />
             </div>
 
-            <button className="btn btn-outline-primary" onClick={onClickHandler}>Create Product</button>
         </form>
     );
 
@@ -132,7 +125,7 @@ const AddProduct = () => {
         }
 
     return (
-        <Layout title="Add a new product" description={`G'day ${user.name}, ready to add a new product?`}>
+        <Layout title="Add a New Product" description={`G'day ${user.name}, ready to add a new product?`}>
             <div className="row">
                 <div className="col-md-8 offset-md-2">
                     {showLoading()}

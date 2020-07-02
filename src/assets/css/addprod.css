@@ -1,3 +1,7 @@
+#photo-text {
+    color: #333333;
+}
+
 /* Input Outline */
 textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {   
     box-shadow: 0 1px 1px rgba(118, 190, 208, 0.075) inset, 0 0 8px rgba(118, 190, 208, 0.6);
@@ -19,10 +23,6 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
     color: #222222;
 }
 
-/* #sign-in-link {
-    color: #76bed0;
+.btn-photo {
+    background-color: #ffffff !important;
 }
-
-#sign-in-link:hover {
-    color: #59b4ca;
-} */

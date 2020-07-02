@@ -5,7 +5,7 @@ import Carousel from './carousel';
 // Home page that will serve as a landing page on the product site
 
 const Home = () => (
-    (<Layout title='Welcome to Store Name™' description='Shop all your favs today.' className='container col-md-8 offset-md-2'>
+    (<Layout title='Welcome to Eleutheria™' description='Shop all your favs today.' className='container col-md-8 offset-md-2'>
         <Carousel />
  <form>
       <div className="form-group">
