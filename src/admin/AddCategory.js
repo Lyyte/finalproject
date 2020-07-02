@@ -5,6 +5,10 @@ import { Link } from "react-router-dom";
 import { createCategory } from "./apiAdmin";
 import '../assets/css/addcat.css';
 
+// This component will be accessed when an admin user wants to create a new product category.
+// The user types the name of the category into the form and once the submit button is clicked
+// the new category will be saved to the category database.
+
 const AddCategory = () => {
     const [name, setName] = useState("");
     const [error, setError] = useState(false);

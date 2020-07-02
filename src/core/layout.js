@@ -2,6 +2,8 @@ import React from "react";
 import Menu from "./menu";
 import '../assets/css/layout.css';
 
+// Further styling for the home page, can be changed as needed
+
 const Layout = ({
     title = "Title",
     description = "Description",

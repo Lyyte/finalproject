@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+// Database model for categories associated with the items
 const categorySchema = new mongoose.Schema(
     {
         name: {
