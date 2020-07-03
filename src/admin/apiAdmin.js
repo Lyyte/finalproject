@@ -18,18 +18,36 @@ export const createCategory = (userId, token, category) => {
         });
 };
 
-export const createProduct = (product) => {
-    return fetch(`api/store`, {
+export const createProduct = product => {
+    return fetch(`/api/store/`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
+            'Content-Type': 'application/json'
         },
-        body: product
+        body: JSON.stringify(product)
     })
-    .then(response => {
-        return response.json();
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+
+export const signup = user => {
+    return fetch(`/api/register`, {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
     })
-    .catch(err => {
-        console.log(err)
-    })
-}
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
