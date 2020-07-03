@@ -8,8 +8,8 @@ router.route("/")
 
 // Matches with "/api/store/:id"
 router
-  .route("/:id")
-  .get(storeController.findById)
+  .route("/:products")
+  .get(storeController.list)
   .put(storeController.update)
   .delete(storeController.remove);
 

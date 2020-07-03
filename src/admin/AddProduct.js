@@ -21,19 +21,17 @@ const AddProduct = () => {
         formData: ''
     });
 
-    const { user, token } = isAuthenticated();
+    const { user } = isAuthenticated();
     const {
         name,
         description,
         price,
-        categories,
         category,
         shipping,
         quantity,
         loading,
         error,
         createdProduct,
-        redirectToProfile,
         formData
     } = values;
 
@@ -59,7 +57,7 @@ const AddProduct = () => {
         event.preventDefault();
         setValues({ ...values, error: '', loading: true });
 
-        createProduct({name, description, price, quantity, shipping}).then(data => {
+        createProduct({name, description, price, quantity, category, shipping}).then(data => {
             if (data.error) {
                 setValues({ ...values, error: data.error });
             } else {
@@ -70,6 +68,7 @@ const AddProduct = () => {
                     photo: '',
                     price: '',
                     quantity: '',
+                    shipping: '',
                     loading: false,
                     createdProduct: data.name
                 });
@@ -96,15 +95,14 @@ const AddProduct = () => {
             </div>
 
             <div className="form-group">
-                <label className="text-muted">Category</label>
-                <select onChange={handleChange('category')} className="form-control">
+                <label className="text-muted">Categories</label>
+                <select onChange={handleChange('category')} className="form-control" value={category}>
                     <option>Please select</option>
-                    {categories &&
-                        categories.map((c, i) => (
-                            <option key={i} value={c._id}>
-                                {c.name}
-                            </option>
-                        ))}
+                    <option value="clothing">Clothing</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="books">Books</option>
+                    <option value="accessories">Acessories</option>
+                    <option value="outdoors">Outdoors</option>
                 </select>
             </div>
 
