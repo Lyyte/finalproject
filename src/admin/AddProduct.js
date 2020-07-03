@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Layout from '../core/layout';
 import { isAuthenticated } from '../user/index';
+import axios from 'axios';
 
 
 const AddProduct = () => {
