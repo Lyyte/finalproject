@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '../core/layout';
 import { isAuthenticated } from '../user/index';
-
+import { Link } from 'react-router-dom';
+import { createProduct } from './apiAdmin';
 
 const AddProduct = () => {
     const [values, setValues] = useState({
@@ -32,23 +33,52 @@ const AddProduct = () => {
         loading,
         error,
         createdProduct,
+        redirectToProfile,
         formData
     } = values;
 
-     const handleChange = name => event => {
-         const value = name === 'photo' ? event.target.files[0] : event.target.value;
-        //  formData.set(name, value);
-         setValues({ ...values, [name]: value });
-     };
+    // load categories and set form data
+    const init = () => {
+                setValues({
+                    ...values,
+                    formData: new FormData()
+                });
+            }
+
+    useEffect(() => {
+        init();
+    }, []);
+
+    const handleChange = name => event => {
+        const value = name === 'photo' ? event.target.files[0] : event.target.value;
+        formData.set(name, value);
+        setValues({ ...values, [name]: value });
+    };
+
+    const clickSubmit = event => {
+        event.preventDefault();
+        setValues({ ...values, error: '', loading: true });
+
+        createProduct({name, description, price, quantity, shipping}).then(data => {
+            if (data.error) {
+                setValues({ ...values, error: data.error });
+            } else {
+                setValues({
+                    ...values,
+                    name: '',
+                    description: '',
+                    photo: '',
+                    price: '',
+                    quantity: '',
+                    loading: false,
+                    createdProduct: data.name
+                });
+            }
+        });
+    };
 
     const newPostForm = () => (
-        <form className="mb-3" >
-            <h4 id="photo-text">Post Photo</h4>
-            <div className="form-group">
-                <label className="btn btn-photo">
-                    <input onChange={handleChange('photo')} type="file" name="photo" accept="image/*" />
-                </label>
-            </div>
+        <form className="mb-3" onSubmit={clickSubmit}>
 
             <div className="form-group">
                 <label className="text-muted">Name</label>
@@ -92,6 +122,7 @@ const AddProduct = () => {
                 <input onChange={handleChange('quantity')} type="number" className="form-control" value={quantity} />
             </div>
 
+            <button className="btn btn-outline-primary">Create Product</button>
         </form>
     );
 
@@ -114,18 +145,8 @@ const AddProduct = () => {
             </div>
         );
 
-        const onClickHandler = () => {
-            const data = new FormData() 
-            data.append('file', values.photo)
-            axios.post("http://localhost:3001/api/upload", data, { // receive two parameter endpoint url ,form data 
-      })
-      .then(res => { // then print response status
-        console.log(res.statusText)
-      })
-        }
-
     return (
-        <Layout title="Add a New Product" description={`G'day ${user.name}, ready to add a new product?`}>
+        <Layout title="Add a new product" description={`G'day ${user.name}, ready to add a new product?`}>
             <div className="row">
                 <div className="col-md-8 offset-md-2">
                     {showLoading()}
