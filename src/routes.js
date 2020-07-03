@@ -9,6 +9,7 @@ import AdminRoute from './user/AdminRoute'
 import AdminDashboard from './user/AdminDashboard'
 import AddCategory from './admin/AddCategory'
 import AddProduct from './admin/AddProduct';
+import Shop from './core/shop'
 
 // These are the routes that direct to the various components that the user sees
 
@@ -17,6 +18,7 @@ const Routes = () => {
         <BrowserRouter>
         <Switch>
             <Route path='/' exact component={Home} />
+            <Route path='/shop' exact component={Shop} />
             <Route path='/signin' exact component={Signin} />
             <Route path='/signup' exact component={Signup} />
             <PrivateRoute path='/user/dashboard' exact component={Dashboard} />

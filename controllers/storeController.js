@@ -26,6 +26,17 @@ module.exports = {
             res.json(products);
         });
   },
+  listCategories: function(req, res){
+    db.Item
+    .distinct('category', {}, (err, categories) => {
+      if (err) {
+          return res.status(400).json({
+              error: 'Categories not found'
+          });
+      }
+      res.json(categories);
+  });
+  },
   findById: function(req, res) {
     db.Item
       .findById(req.params.id)
