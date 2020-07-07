@@ -6,11 +6,15 @@ router.route("/")
   .get(storeController.findAll)
   .post(storeController.create);
 
-// Matches with "/api/store/:id"
+// Matches with "/api/store/:products"
 router
-  .route("/:id")
-  .get(storeController.findById)
+  .route("/:products")
+  .get(storeController.list)
   .put(storeController.update)
   .delete(storeController.remove);
+
+router
+  .route('/products/categories')
+  .get(storeController.listCategories)
 
 module.exports = router;
