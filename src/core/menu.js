@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { signout, isAuthenticated } from "../user/index";
 import '../assets/css/menu.css';
+import { itemTotal } from "./carthelper";
 
 // Menu represents the navbar which will be different depending on if the user is signed in
 // or if they are an admin account.
@@ -46,6 +47,22 @@ const Menu = ({ history }) => (
                             Shop
                 </Link>
                     </li>
+
+                    <li className="nav-item">
+                <Link
+                    className="nav-link"
+                    style={isActive(history, "/cart")}
+                    to="/cart"
+                >
+                    Cart{" "}
+                    <sup>
+                        <small className="cart-badge">{itemTotal()}</small>
+                    </sup>
+                </Link>
+            </li>
+
+
+
 
                     {isAuthenticated() && isAuthenticated().user.role === 0 && (
                         <li className="nav-item">
