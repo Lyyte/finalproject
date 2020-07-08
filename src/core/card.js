@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import moment from 'moment';
 import { addItem, updateItem, removeItem } from './carthelper';
+import '../assets/css/card.css';
 
 const Card = ({
   product,
@@ -29,8 +30,8 @@ const Card = ({
   const showAddToCartBtn = showAddToCartButton => {
     return (
       showAddToCartButton && (
-        <button onClick={addToCart} className="btn btn-outline-warning mt-2 mb-2 card-btn-1  ">
-          Add to cart
+        <button onClick={addToCart} className="btn mt-2 mb-2 card-btn-1  ">
+          Add to Cart
         </button>
       )
     );
@@ -38,9 +39,9 @@ const Card = ({
 
   const showStock = quantity => {
     return quantity > 0 ? (
-      <span className="badge badge-primary badge-pill">In Stock </span>
+      <span className="badge badge-success badge-pill">In Stock </span>
     ) : (
-      <span className="badge badge-primary badge-pill">Out of Stock </span>
+      <span className="badge badge-danger badge-pill">Out of Stock </span>
     );
   };
 
@@ -74,7 +75,7 @@ const Card = ({
             removeItem(product._id);
             setRun(!run); // run useEffect in parent Cart
           }}
-          className="btn btn-outline-danger mt-2 mb-2"
+          className="btn mt-2 mb-2"
         >
           Remove Product
         </button>
@@ -82,13 +83,13 @@ const Card = ({
     );
   };
   return (
-    <div className="card ">
-      <div className="card-header card-header-1 ">{product.name}</div>
+    <div className="card item-holder">
+      <div className="card-header card-header-1" style={{color: '#ffffff', fontSize: '22px', fontWeight: 'bold'}}>{product.name}</div>
       <div className="card-body">
         {shouldRedirect(redirect)}
         <p className="card-p  mt-2">{product.description.substring(0, 100)} </p>
-        <p className="card-p black-10">$ {product.price}</p>
-        <p className="black-8">Added on {moment(product.createdAt).fromNow()}</p>
+        <p className="card-p black-10">${product.price}</p>
+        <p className="black-8">Added {moment(product.createdAt).fromNow()}</p>
         {showStock(product.quantity)}
         <br />
 

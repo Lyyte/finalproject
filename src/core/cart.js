@@ -15,7 +15,7 @@ const Cart = () => {
     const showItems = items => {
         return (
             <div>
-                <h2>Your cart has {`${items.length}`} items</h2>
+                <h2>Your Cart Has {`${items.length}`} Item(s)</h2>
                 <hr />
                 {items.map((product, i) => (
                     <Card
@@ -34,21 +34,21 @@ const Cart = () => {
 
     const noItemsMessage = () => (
         <h2>
-            Your cart is empty. <br /> <Link to="/">Continue shopping</Link>
+            Your cart is empty. <br /> <Link to="/">Continue shopping.</Link>
         </h2>
     );
 
     return (
         <Layout
             title="Shopping Cart"
-            description="Manage Cart Here."
+            description="Manage Your Cart Here."
             className="container-fluid"
         >
             <div className="row">
                 <div className="col-6">{items.length > 0 ? showItems(items) : noItemsMessage()}</div>
 
                 <div className="col-6">
-                    <h2 className="mb-4">Your cart summary</h2>
+                    <h2 className="mb-4">Your Cart Summary</h2>
                     <hr />
                 </div>
             </div>

@@ -1,24 +1,8 @@
-// import React, { useState, useEffect} from 'react'
-// import Layout from './layout'
-// import Carousel from './carousel';
-// import { getProducts} from './apicore'
- 
-// // Home page that will serve as a landing page on the product site
-
-// const Home = () => (
-//     const [] = useState({})
-//     (<Layout title='Welcome to Eleutheria™' description='Shop all your favs today.' className='container col-md-8 offset-md-2'>
-//         <Carousel />
-//     </Layout>
-//     )
-// )
-// export default Home
-
-
 import React, { useState, useEffect } from 'react';
 import Layout from './layout';
 import { getProducts } from './apicore';
 import Card from './card'
+import Carousel from './carousel';
 
 const Home = () => {
     const [productsBySell, setProductsBySell] = useState([]);
@@ -53,10 +37,11 @@ const Home = () => {
 
     return (
         <Layout
-            title="FullStack React Node MongoDB Ecommerce App"
-            description="Node React E-commerce App"
+            title="Welcome to Eleutheria™"
+            description="Shop all your favs today."
             className="container-fluid"
         >
+            <Carousel />
             <h2 className="mb-4">New Arrivals</h2>
             <div className="row">
                 {productsByArrival.map((product, i) => (
