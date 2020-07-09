@@ -3,6 +3,7 @@ import Layout from '../core/layout';
 import { isAuthenticated } from '../user/index';
 import { Link } from 'react-router-dom';
 import { createProduct } from './apiAdmin';
+import '../assets/css/addprod.css';
 
 const AddProduct = () => {
     const [values, setValues] = useState({
@@ -120,7 +121,7 @@ const AddProduct = () => {
                 <input onChange={handleChange('quantity')} type="number" className="form-control" value={quantity} />
             </div>
 
-            <button className="btn btn-outline-primary">Create Product</button>
+            <button className="btn">Create Product</button>
         </form>
     );
 

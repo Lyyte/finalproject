@@ -18,11 +18,3 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
     background-color: #dfb200;
     color: #222222;
 }
-
-/* #sign-in-link {
-    color: #76bed0;
-}
-
-#sign-in-link:hover {
-    color: #59b4ca;
-} */
