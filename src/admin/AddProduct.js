@@ -1,13 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '../core/layout';
 import { isAuthenticated } from '../user/index';
-import axios from 'axios';
-
-
-// Similar to create category, this component is accessed via the admin panel and allows
-// an admin to use a form to create a new product to be saved in the product database.
-// The category field will also dynamically pull from the category database in order
-// to remain up to date with categories added at later dates.
+import { Link } from 'react-router-dom';
+import { createProduct } from './apiAdmin';
+import '../assets/css/addprod.css';
 
 const AddProduct = () => {
     const [values, setValues] = useState({
@@ -26,12 +22,11 @@ const AddProduct = () => {
         formData: ''
     });
 
-    const { user, token } = isAuthenticated();
+    const { user } = isAuthenticated();
     const {
         name,
         description,
         price,
-        categories,
         category,
         shipping,
         quantity,
@@ -41,20 +36,49 @@ const AddProduct = () => {
         formData
     } = values;
 
-     const handleChange = name => event => {
-         const value = name === 'photo' ? event.target.files[0] : event.target.value;
-        //  formData.set(name, value);
-         setValues({ ...values, [name]: value });
-     };
+    // load categories and set form data
+    const init = () => {
+                setValues({
+                    ...values,
+                    formData: new FormData()
+                });
+            }
+
+    useEffect(() => {
+        init();
+    }, []);
+
+    const handleChange = name => event => {
+        const value = name === 'photo' ? event.target.files[0] : event.target.value;
+        formData.set(name, value);
+        setValues({ ...values, [name]: value });
+    };
+
+    const clickSubmit = event => {
+        event.preventDefault();
+        setValues({ ...values, error: '', loading: true });
+
+        createProduct({name, description, price, quantity, category, shipping}).then(data => {
+            if (data.error) {
+                setValues({ ...values, error: data.error });
+            } else {
+                setValues({
+                    ...values,
+                    name: '',
+                    description: '',
+                    photo: '',
+                    price: '',
+                    quantity: '',
+                    shipping: '',
+                    loading: false,
+                    createdProduct: data.name
+                });
+            }
+        });
+    };
 
     const newPostForm = () => (
-        <form className="mb-3" >
-            <h4>Post Photo</h4>
-            <div className="form-group">
-                <label className="btn btn-secondary">
-                    <input onChange={handleChange('photo')} type="file" name="photo" accept="image/*" />
-                </label>
-            </div>
+        <form className="mb-3" onSubmit={clickSubmit}>
 
             <div className="form-group">
                 <label className="text-muted">Name</label>
@@ -72,15 +96,14 @@ const AddProduct = () => {
             </div>
 
             <div className="form-group">
-                <label className="text-muted">Category</label>
-                <select onChange={handleChange('category')} className="form-control">
+                <label className="text-muted">Categories</label>
+                <select onChange={handleChange('category')} className="form-control" value={category}>
                     <option>Please select</option>
-                    {categories &&
-                        categories.map((c, i) => (
-                            <option key={i} value={c._id}>
-                                {c.name}
-                            </option>
-                        ))}
+                    <option value="clothing">Clothing</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="books">Books</option>
+                    <option value="accessories">Acessories</option>
+                    <option value="outdoors">Outdoors</option>
                 </select>
             </div>
 
@@ -98,7 +121,7 @@ const AddProduct = () => {
                 <input onChange={handleChange('quantity')} type="number" className="form-control" value={quantity} />
             </div>
 
-            <button className="btn btn-outline-primary" onClick={onClickHandler}>Create Product</button>
+            <button className="btn">Create Product</button>
         </form>
     );
 
@@ -120,16 +143,6 @@ const AddProduct = () => {
                 <h2>Loading...</h2>
             </div>
         );
-
-        const onClickHandler = () => {
-            const data = new FormData() 
-            data.append('file', values.photo)
-            axios.post("http://localhost:3001/api/upload", data, { // receive two parameter endpoint url ,form data 
-      })
-      .then(res => { // then print response status
-        console.log(res.statusText)
-      })
-        }
 
     return (
         <Layout title="Add a new product" description={`G'day ${user.name}, ready to add a new product?`}>

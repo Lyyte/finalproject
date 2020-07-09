@@ -1,41 +1,67 @@
-import React from 'react'
-import Layout from './layout'
+import React, { useState, useEffect } from 'react';
+import Layout from './layout';
+import { getProducts } from './apicore';
+import Card from './card'
 import Carousel from './carousel';
 
-// Home page that will serve as a landing page on the product site
+const Home = () => {
+    const [productsBySell, setProductsBySell] = useState([]);
+    const [productsByArrival, setProductsByArrival] = useState([]);
+    const [error, setError] = useState(false);
 
-const Home = () => (
-    (<Layout title='Welcome to Store Name™' description='Shop all your favs today.' className='container col-md-8 offset-md-2'>
-        <Carousel />
- <form>
-      <div className="form-group">
-          <label className="text-muted">Product Name</label>
-          <input type="text" className="form-control"/>
-      </div>
+    const loadProductsBySell = () => {
+        getProducts('sold').then(data => {
+            if (data.error) {
+                setError(data.error);
+            } else {
+                setProductsBySell(data);
+            }
+        });
+    };
 
-      <div className="form-group">
-          <label className="text-muted">Quantity</label>
-          <input type="number" className="form-control"/>
-      </div>
+    const loadProductsByArrival = () => {
+        getProducts('createdAt').then(data => {
+            console.log(data);
+            if (data.error) {
+                setError(data.error);
+            } else {
+                setProductsByArrival(data);
+            }
+        });
+    };
 
-      <div className="form-group">
-          <label className="text-muted">Price</label>
-          <input type="number" className="form-control"/>
-      </div>
+    useEffect(() => {
+        loadProductsByArrival();
+        loadProductsBySell();
+    }, []);
 
-      <div className="form-group">
-          <label className="text-muted">Quick Descriptions</label>
-          <input type="text" className="form-control"/>
-      </div>
+    return (
+        <Layout
+            title="Welcome to Eleutheria™"
 
-      <div className="form-group">
-          <label className="text-muted">imageURL</label>
-          <input type="string" className="form-control"/>
-      </div>
+            className="container-fluid"
+        >
+            <Carousel />
+            <h2 className="mb-4">New Arrivals</h2>
+            <div className="row">
+                {productsByArrival.map((product, i) => (
+                    <div key={i} className="col-4 mb-3">
+                        <Card product={product} />
+                    </div>
+                ))}
+            </div>
 
+            <h2 className="mb-4">Best Sellers</h2>
+            <div className="row">
+                {productsBySell.map((product, i) => (
+                    <div key={i} className="col-4 mb-3">
+                        <Card product={product} />
+                    </div>
+                ))}
+            </div>
+        </Layout>
+    );
+};
 
- </form>
-    </Layout>
-    )
-)
-export default Home
+export default Home;
+

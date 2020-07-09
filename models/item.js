@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const { ObjectId } = mongoose.Schema;
 const productSchema = new mongoose.Schema(
     {
         name: {
@@ -17,12 +16,11 @@ const productSchema = new mongoose.Schema(
             type: Number,
             trim: true,
             required: true,
-            maxlength: 32
+            maxlength: 100000000
         },
         category: {
             type: String,
-            ref: "Category",
-            required: false
+            required: true
         },
         quantity: {
             type: Number
@@ -36,10 +34,11 @@ const productSchema = new mongoose.Schema(
             contentType: String
         },
         shipping: {
-            required: false,
+            required: true,
             type: Boolean
-        }
-    }, 
+        },
+    },
+        { timestamps: true }
 );
 module.exports = mongoose.model("Product", productSchema);
 

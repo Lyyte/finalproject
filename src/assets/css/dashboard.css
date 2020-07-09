@@ -1,0 +1,40 @@
+/* 
+Color Palette:
+
+#f55d3e orange
+#76BED0 blue
+#4e96aa dk blue
+#3d8296 dkr blue
+
+#f7cb15 yellow
+#f1c101 dk yellow
+#dfb200 dkr yellow
+
+#444444 gray
+#222222 dk gray
+#ffffff white
+*/
+
+.card-header {
+    background-color: #76BED0;
+}
+
+h3 {
+    color: #ffffff;
+}
+
+h4 {
+    color: #ffffff;
+}
+
+.nav-link {
+    color: #76BED0;
+}
+
+.nav-link:hover {
+    color: #4e96aa;
+}
+
+.nav-link:active {
+    color: #3d8296;
+}

@@ -28,7 +28,7 @@ const Signup = () => {
         setValues({ ...values, error: false });
         signup({ name, email, password, password2 }).then(data => {
             if (data) {
-                setValues({ ...values, error: data[Object.keys(data)[0]], success: false });
+                setValues({ ...values, error: data[Object.keys(data)[0]], success: true });
             } else {
                 setValues({
                     ...values,
@@ -89,13 +89,12 @@ const Signup = () => {
     return (
         <Layout
             title="Sign Up"
-            description="Sign Up for StoreName™"
+            description="Sign Up for Eleutheria™"
             className="container col-md-8 offset-md-2"
         >
             {showSuccess()}
             {showError()}
             {signUpForm()}
-            {JSON.stringify(values)}
         </Layout>
     );
 };
