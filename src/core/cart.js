@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Layout from './layout';
 import { getCart } from './carthelper';
 import Card from './card';
+import Checkout from './checkout'
 
 const Cart = () => {
     const [items, setItems] = useState([]);
@@ -50,6 +51,7 @@ const Cart = () => {
                 <div className="col-6">
                     <h2 className="mb-4">Your Cart Summary</h2>
                     <hr />
+                    <Checkout products={items} setRun={setRun} run={run} />
                 </div>
             </div>
         </Layout>
