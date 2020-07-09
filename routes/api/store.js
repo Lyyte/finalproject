@@ -17,4 +17,12 @@ router
   .route('/products/categories')
   .get(storeController.listCategories)
 
+router
+  .get("/braintree/getToken/:userId", storeController.generateToken)
+  .post("/braintree/payment/:userId", storeController.processPayment)
+
+router
+  .post("/order/create/:userId", storeController.createorder)
+
+
 module.exports = router;

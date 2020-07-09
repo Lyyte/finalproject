@@ -19,7 +19,7 @@ export const getCategories = () => {
 };
 
 export const getBraintreeClientToken = (userId, token) => {
-    return fetch(`braintree/getToken/${userId}`, {
+    return fetch(`/api/store/braintree/getToken/${userId}`, {
         method: "GET",
         headers: {
             Accept: "application/json",
@@ -34,7 +34,7 @@ export const getBraintreeClientToken = (userId, token) => {
 };
 
 export const processPayment = (userId, token, paymentData) => {
-    return fetch(`/braintree/payment/${userId}`, {
+    return fetch(`/api/store/braintree/payment/${userId}`, {
         method: "POST",
         headers: {
             Accept: "application/json",
@@ -48,4 +48,21 @@ export const processPayment = (userId, token, paymentData) => {
         })
         .catch(err => console.log(err));
 };
+
+export const createOrder = (userId, token, createOrderData) => {
+    return fetch(`/api/store/order/create/${userId}`, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({ order: createOrderData })
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
 
