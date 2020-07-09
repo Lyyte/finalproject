@@ -38,7 +38,7 @@ const Home = () => {
     return (
         <Layout
             title="Welcome to Eleutheria™"
-            description="Shop all your favs today."
+
             className="container-fluid"
         >
             <Carousel />
